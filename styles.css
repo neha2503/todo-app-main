@@ -12,6 +12,15 @@ body {
     justify-content: center;
 }
 
+body.new1 {
+    --img-bg: url("../assets/bg-desktop-light.jpg");
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: hsl(285, 8%, 91%);
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+  }
+
 .background-image {
     position: absolute;
     top: 0;

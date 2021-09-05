@@ -1,3 +1,20 @@
+document.addEventListener("DOMContentLoaded", main);
+function main() {
+    // theme-switcher
+    document
+      .getElementById("theme-switcher")
+      .addEventListener("click", function () {
+        document.querySelector("body").classList.toggle("new1");
+        const themeImg = this.children[0];
+        themeImg.setAttribute(
+          "src",
+          themeImg.getAttribute("src") === "./assets/icon-sun.svg"
+            ? "./assets/icon-moon.svg"
+            : "./assets/icon-sun.svg"
+        );
+      });
+  }
+  
 function getItems(){
     db.collection("todo-items").onSnapshot((snapshot) => {
         let items = [];
