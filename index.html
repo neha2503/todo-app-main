@@ -1,90 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <title>To Do List App</title>
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
     <script src="./firebase.js"></script>
-    <script src="./script.js"></script>
-</head>
-<body>
-    
-    <div class="container">
-        <div class="header">
-            <div class="title">
-                TODO
-            </div>
-            <div class="theme">
-                <button id="theme-switcher">
-                <img src="assets/icon-sun.svg" alt="Change color theme">
-                </button>
-            </div>
-        </div>
-        <div class="new-todo">
-            <div class="check">
-                <div class="check-mark">
-                </div>
-            </div>
-            <div class="new-todo-input">
-                <form onsubmit="addItem(event)">
-                    <input id="todo-input" type="text" placeholder="Create a new todo..." />
-                </form>
-            </div>
-        </div>
-        <div class="todo-items-wrapper">
-            <div class="todo-items">
-                <div class="todo-item">
-                    <div class="check">
-                        <div class="check-mark checked">
-                            <img src="assets/icon-check.svg">
-                        </div>
-                    </div>
-                    <div class="todo-text checked">
-                        Cut the lawn
-                    </div>
-                </div>
-                <div class="todo-item">
-                    <div class="check">
-                        <div class="check-mark">
-
-                        </div>
-                    </div>
-                    <div class="todo-text">
-                        Cut the lawn
-                    </div>
-                </div>
-                <div class="todo-item">
-                    <div class="check">
-                        <div class="check-mark">
-                        </div>
-                    </div>
-                    <div class="todo-text">
-                        Cut the lawn
-                    </div>
-                </div>
-            </div>
-            <div class="todo-items-info">
-                <div class="items-left">
-                    <p class><span id="items-left">0</span> items left</p>
-                </div>
-                <div class="items-statuses">
-                   <button id="all"> <span class="active">All</span></button>
-                    <button id="active"><span>Active</span></button>
-                   <button id="completed"><span>Completed</span></button>
-                </div>
-                <div class="items-clear">
-                    <button id="clear-completed"><span>Clear Completed</span></button>
-                </div>
-            </div>
-        </div>
+    <script defer src="app.js"></script>
+    <title>To Do List App</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="banner">
+      <!-- <img src="./images/bg-desktop-dark.jpg" alt="banner" /> -->
     </div>
-</body>
+
+    <div class="continer">
+      <div class="todo-header">
+        <h1 class="todo-title">TODO</h1>
+        <div class="toggle" onclick="toggleTodo()">
+          <div class="circle"></div>
+          <img class="moon" src="./images/icon-moon.svg" alt="" />
+          <img class="sun" src="./images/icon-sun.svg" />
+        </div>
+      </div>
+      <div class="new_todo">
+        <div class="checked-item">
+          <div class="check-mark"></div>
+        </div>
+        <form autocomplete="off" onsubmit="addTodo(event)">
+          <input
+            id="addTodoInput"
+            type="text"
+            class="new-todo-input"
+            placeholder="Create a new todo..."
+          />
+        </form>
+      </div>
+      <div class="todo-list-continer">
+        <div class="todo-continer"></div>
+
+        <div class="todo__filters">
+          <div class="todo__filters__sides">
+            <p class="btn"><span id="items-left"></span> item(s) left</p>
+            <div class="btn btn--clear" id="clear-completed">
+              Clear Completed
+            </div>
+          </div>
+          <div class="todo__filters__center">
+            <span data-id="all" id="all" class="active category">all</span>
+            <span data-id="active" id="active" class="category">active</span>
+            <span data-id="complete" id="complete" class="category">complete</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="notification">
+      <p></p>
+    </div>
+  </body>
 </html>
