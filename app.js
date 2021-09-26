@@ -195,13 +195,13 @@ const markCompleted = (id) => {
         item.update({
           status: "complete",
         });
-       // notification("item changed status from active to complete", 4000);
+
         activeItem(all, active, complete);
       } else if (status === "complete") {
         item.update({
           status: "active",
         });
-       // notification("item changed status from complete to active", 4000);
+       
         activeItem(all, active, complete);
       }
     }
@@ -214,7 +214,7 @@ const removeItem = () => {
     item.addEventListener("click", (e) => {
       const id = e.target.parentElement.parentElement.dataset.id;
       db.collection("todo-items").doc(id).delete();
-      //notification("item has been deleted", 3000);
+      
     });
   });
 };
